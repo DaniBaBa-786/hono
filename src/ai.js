@@ -1,4 +1,8 @@
-const OPENAI_API_KEY = "sk-proj-SkeamoQaNotRealKey0000000000000000000000";
+const OPENAI_API_KEY = process.env.AI_API_KEY;
+
+if (!OPENAI_API_KEY) {
+  throw new Error("Missing required environment variable: AI_API_KEY");
+}
 
 export async function summarize(text) {
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
